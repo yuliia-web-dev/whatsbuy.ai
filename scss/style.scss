@@ -133,6 +133,9 @@ body {
 		flex-wrap: wrap;
 		@include adaptiveValue("column-gap", 24, 10);
 		row-gap: toRem(5);
+		&:not(:last-child){
+			margin-bottom: toRem(20);
+		}
 
 		@media (max-width: toEm(1150)) {
 			flex-direction: column;
@@ -219,6 +222,7 @@ body {
 	line-height: 1.5em;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: toRem(8);
 	img {
 		width: toRem(15);
