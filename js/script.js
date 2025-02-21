@@ -1,16 +1,17 @@
 "use strict"
-
 document.addEventListener("DOMContentLoaded", () => {
 	const iconMenu = document.querySelector(".icon-menu");
 	const menuBody = document.querySelector(".menu__body");
 
-	iconMenu.addEventListener("click", (event) => {
+	iconMenu.addEventListener("click", () => {
 		if (window.innerWidth <= 1150) {
 			iconMenu.classList.toggle("active");
 			document.body.classList.toggle("menu-open");
 
 			if (document.body.classList.contains("menu-open")) {
-				menuBody.style.maxHeight = menuBody.scrollHeight + "px"; // Реальна висота
+				// Отримуємо реальну висоту меню
+				const maxMenuHeight = Math.min(window.innerHeight * 0.8, menuBody.scrollHeight);
+				menuBody.style.maxHeight = `${maxMenuHeight}px`;
 			} else {
 				menuBody.style.maxHeight = "0px";
 			}
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (window.innerWidth > 1150) {
 			document.body.classList.remove("menu-open");
 			iconMenu.classList.remove("active");
-			menuBody.style.maxHeight = "none"; // Відновлюємо нормальну висоту
+			menuBody.style.maxHeight = "none";
 		}
 	});
 });
@@ -52,14 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // console.log(arrow.getTotalLength());
 
-window.addEventListener('scroll', () => {
-	const header = document.querySelector('header');
-	if (window.scrollY > 50) { // Кількість пікселів, після яких змінюється фон
-		header.classList.add('scrolled');
-	} else {
-		header.classList.remove('scrolled');
-	}
-});
+
 //========================================
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -112,7 +112,7 @@ body {
 		background: #fff;
 		opacity: 0;
 		z-index: 10;
-		overflow-y: auto; // Додаємо прокрутку
+		overflow: auto; // Додаємо прокрутку
 		max-height: 0;
 		transition:
 			max-height 0.4s ease,

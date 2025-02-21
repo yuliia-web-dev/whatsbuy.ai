@@ -251,7 +251,7 @@ body.menu-open {
     background: #fff;
     opacity: 0;
     z-index: 10;
-    overflow-y: auto;
+    overflow: auto;
     max-height: 0;
     -webkit-transition: max-height 0.4s ease, opacity 0.3s ease;
     transition: max-height 0.4s ease, opacity 0.3s ease;
