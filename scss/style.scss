@@ -66,7 +66,7 @@ body {
 	}
 
 	&__body {
-		padding: toRem(20);
+		@include adaptiveValue("padding", 20, 10);
 		gap: toRem(15);
 		display: flex;
 		align-items: center;
@@ -102,29 +102,29 @@ body {
 .menu {
 	// .menu__body
 
-&__body{
+	&__body {
 		@media (max-width: toEm(1150)) {
-		padding: toRem(30) toRem(15);
-		position: absolute;
-		top: calc(100% + toRem(10));
-		left: 0;
-		width: 100%;
-		background: #fff;
-		opacity: 0;
-		z-index: 10;
-		overflow: auto; // Додаємо прокрутку
-		max-height: 0;
-		transition:
-			max-height 0.4s ease,
-			opacity 0.3s ease;
+			padding: toRem(30) toRem(15);
+			position: absolute;
+			top: calc(100% + toRem(10));
+			left: 0;
+			width: 100%;
+			background: #fff;
+			opacity: 0;
+			z-index: 10;
+			overflow: auto; // Додаємо прокрутку
+			max-height: 0;
+			transition:
+				max-height 0.4s ease,
+				opacity 0.3s ease;
 
-		.menu-open & {
-			max-height: 80vh; // Меню не займатиме більше 80% висоти екрану
-			opacity: 1;
-			visibility: visible;
+			.menu-open & {
+				max-height: 80vh; // Меню не займатиме більше 80% висоти екрану
+				opacity: 1;
+				visibility: visible;
+			}
 		}
 	}
-}
 
 	// .menu__list
 
