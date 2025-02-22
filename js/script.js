@@ -139,6 +139,47 @@ function topFunction() {
 }
 
 
+//=================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+	const counters = document.querySelectorAll('.item-counter');
+
+	// Функція для анімації чисел
+	const animateCounter = (element) => {
+		const target = +element.getAttribute('data-count');
+		let count = 0;
+		const increment = target / 100;
+
+		const interval = setInterval(() => {
+			count += increment;
+			if (count >= target) {
+				clearInterval(interval);
+				count = target;
+			}
+			element.textContent = Math.floor(count) + (element.textContent.includes('%') ? '%' : '+');
+		}, 10);
+	};
+
+	// Перевірка видимості елемента за допомогою IntersectionObserver
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				const numberElement = entry.target.querySelector('.item-counter__number');
+				if (numberElement && !numberElement.classList.contains('counted')) {
+					animateCounter(numberElement);
+					numberElement.classList.add('counted');
+				}
+				entry.target.classList.add('visible');
+			}
+		});
+	}, {
+		threshold: 0.5
+	});
+
+	counters.forEach(counter => {
+		observer.observe(counter);
+	});
+});
 
 
 

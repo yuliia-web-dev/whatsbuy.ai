@@ -149,7 +149,7 @@ body {
 			transition:
 				max-height 0.4s ease,
 				opacity 0.3s ease;
-
+			pointer-events: none;
 			.menu-open & {
 				max-height: 80vh; // Меню не займатиме більше 80% висоти екрану
 				opacity: 1;
@@ -553,6 +553,9 @@ body {
 	color: #21225b;
 	font-weight: 700;
 	@include adaptiveValue("font-size", 38, 25);
+	&--white {
+		color: #fff;
+	}
 }
 .item-features {
 	@include adaptiveValue("padding-top", 40, 20);
@@ -653,5 +656,200 @@ body {
 		@media (max-width: toEm(480)) {
 			text-align: center;
 		}
+	}
+}
+
+//=====================PARTNERS===========================
+
+.partners {
+	// .partners__container
+
+	&__container {
+		max-width: toRem(1150);
+	}
+
+	// .partners__top-wrap
+
+	&__top-wrap {
+		@include adaptiveValue("padding-top", 50, 20);
+		@include adaptiveValue("padding-bottom", 42, 20);
+		@include adaptiveValue("padding-left", 50, 20);
+		@include adaptiveValue("padding-right", 50, 20);
+		background-image: linear-gradient(90deg, #2f33a1 0%, #4143a3 100%);
+		border-radius: toRem(20) 0 0 0;
+		display: flex;
+		justify-content: space-between;
+		gap: toRem(20);
+		@media (max-width: toRem(845)) {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: toRem(50);
+		}
+	}
+
+	// .partners__heading
+
+	&__heading {
+		max-width: toRem(600);
+		@media (max-width: toRem(845)) {
+			max-width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+	}
+
+	// .partners__label
+
+	&__label {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 25, 15);
+		}
+	}
+
+	// .partners__title
+
+	&__title {
+	}
+
+	// .partners__logos
+
+	&__logos {
+	}
+
+	// .partners__bottom-wrap
+
+	&__bottom-wrap {
+		color: #fff;
+		border-top: toRem(2) dashed #ffffff38;
+		@include adaptiveValue("padding-top", 46, 20);
+		@include adaptiveValue("padding-bottom", 57, 20);
+		@include adaptiveValue("padding-left", 50, 20);
+		@include adaptiveValue("padding-right", 50, 20);
+		background-color: #4143a3;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: toRem(20);
+		border-radius: 0 0 toRem(20) 0;
+		@media (max-width: toRem(845)) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	// .partners__info
+
+	&__info {
+		max-width: toRem(263);
+		@media (max-width: toRem(845)) {
+			max-width: 100%;
+			text-align: center;
+		}
+	}
+
+	// .partners__subtitle
+
+	&__subtitle {
+		font-family: "Inter";
+		@include adaptiveValue("font-size", 22, 18);
+		font-weight: 700;
+		line-height: 1.2em;
+		text-transform: capitalize;
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+
+	// .partners__text
+
+	&__text {
+		line-height: 1.4;
+	}
+
+	// .partners__counter
+
+	&__counter {
+	}
+}
+
+.logo-partner {
+	display: flex;
+	flex-wrap: wrap;
+	gap: toRem(15);
+	width: 100%;
+	max-width: toRem(590);
+	@media (max-width: toRem(845)) {
+		max-width: 100%;
+	}
+	// .logo-partner__img
+
+	&__img {
+		flex: 1 1 calc(33.333% - toRem(20));
+		border-radius: toRem(10) 0 toRem(10) 0;
+		width: 100%;
+		height: 100%;
+		max-height: toRem(65);
+		object-fit: cover;
+	}
+}
+.counter {
+	display: flex;
+	@media (max-width: toRem(550)) {
+		flex-direction: column;
+	}
+	// .counter__item
+
+	&__item {
+	}
+}
+.item-counter {
+	padding: 0 toRem(30);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: toRem(15);
+	@media (max-width: toRem(550)) {
+		padding: toRem(20) 0;
+	}
+	&:not(:last-child) {
+		border-right: toRem(1) solid #ffffff21;
+		@media (max-width: toRem(550)) {
+			border-right: none;
+			border-bottom: toRem(1) solid #ffffff21;
+		}
+	}
+
+	// .item-counter__number
+
+	&__number {
+		font-family: "Inter";
+		@include adaptiveValue("font-size", 38, 25);
+		font-weight: 700;
+		line-height: 1.2em;
+	}
+
+	// .item-counter__element
+
+	&__element {
+		max-width: toRem(54);
+		width: 100%;
+		position: relative;
+		background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"><polyline points="0,18 12,6 24,18"/></svg>')
+			repeat-x;
+		height: toRem(20);
+	}
+
+	// .item-counter__text
+
+	&__text {
+		@include adaptiveValue("font-size", 19, 16);
+		text-transform: capitalize;
+		line-height: 1.2em;
+		font-family: "Inter";
+		text-align: center;
 	}
 }
