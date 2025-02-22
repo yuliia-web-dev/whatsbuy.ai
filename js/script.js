@@ -164,7 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				clearInterval(interval);
 				count = target;
 			}
-			element.textContent = Math.floor(count) + (element.textContent.includes('%') ? '%' : '+');
+
+			// Додавання "M" для чисел більше 1 мільйона
+			if (target >= 1000000) {
+				element.textContent = Math.floor(count / 1000000) + "M+";
+			} else {
+				element.textContent = Math.floor(count) + (element.textContent.includes('%') ? '%' : '+');
+			}
 		}, 10);
 	};
 
