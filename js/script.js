@@ -120,6 +120,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//===========================
+
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+	if (document.body.scrollTop > 100 || document.documentElement.scrollTop >100){
+		document.getElementById("scrollToTopBtn").classList.add("visible");
+	} else {
+		document.getElementById("scrollToTopBtn").classList.remove("visible");
+	}
+}
+
+document.getElementById("scrollToTopBtn").onclick = function () { topFunction() };
+
+function topFunction() {
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 
 
 

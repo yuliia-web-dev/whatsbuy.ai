@@ -28,6 +28,7 @@ html {
 }
 body {
 	font-family: "Poppins";
+	height: 1000vh;
 
 	&.menu-open {
 		overflow: hidden;
@@ -50,6 +51,38 @@ body {
 	padding: 0 toRem(15);
 }
 
+#scrollToTopBtn {
+	visibility: hidden;
+	opacity: 0;
+	position: fixed;
+	bottom: toRem(200);
+	right: toRem(15);
+	z-index: 20;
+	width: toRem(50);
+	height: toRem(50);
+	background-color: #21225b;
+	border-radius: 50%;
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s ease;
+	img {
+		width: toRem(20);
+		height: toRem(20);
+		will-change: transform;
+		transition: transform 0.3s;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			img {
+				transform: scale(1.1);
+			}
+		}
+	}
+	&.visible {
+		visibility: visible;
+		opacity: 1;
+	}
+}
 .header {
 	@include adaptiveValue("padding-top", 50, 10);
 	position: fixed;
@@ -57,7 +90,6 @@ body {
 	left: 0;
 	width: 100%;
 	z-index: 55;
-	transition: all 0.3s ease;
 
 	// .header__container
 
@@ -133,7 +165,7 @@ body {
 		flex-wrap: wrap;
 		@include adaptiveValue("column-gap", 24, 10);
 		row-gap: toRem(5);
-		&:not(:last-child){
+		&:not(:last-child) {
 			margin-bottom: toRem(20);
 		}
 
@@ -243,11 +275,6 @@ body {
 	}
 }
 
-.hero {
-	background-color: #4143a3;
-	min-height: 500px;
-}
-
 .footer {
 	background-color: transparent;
 	background-image: linear-gradient(180deg, #4143a3 0%, #21225b 100%);
@@ -279,6 +306,10 @@ body {
 	// .footer__logo
 
 	&__logo {
+		img {
+			@include adaptiveValue("width", 217, 150);
+			height: auto;
+		}
 	}
 
 	// .footer__social
@@ -352,6 +383,275 @@ body {
 		&::before {
 			color: white;
 			font-size: toRem(20);
+		}
+	}
+}
+
+//=========================HERO SECTION================================
+
+.hero {
+	@include adaptiveValue("padding-top", 250, 100);
+	min-height: 100vh;
+	position: relative;
+	background-color: transparent;
+	background-image: linear-gradient(180deg, #4143a3 0%, #21225b 100%);
+	overflow: hidden;
+	@media (max-width: toEm(890)) {
+		min-height: toRem(500);
+	}
+
+	&__shape-bottom {
+		position: absolute;
+		bottom: toRem(-4);
+		pointer-events: none;
+		z-index: 2;
+		width: 100%;
+		left: 0;
+		overflow: hidden;
+		svg {
+			height: auto;
+			width: 100%; /* Використовуємо 100%, щоб SVG займав всю ширину */
+			left: 50%;
+		}
+	}
+	// .hero__container
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(40);
+		justify-content: center;
+		align-items: center;
+		z-index: 2;
+		max-width: toRem(1150);
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url(../img/shape.webp);
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			z-index: 1;
+			pointer-events: none;
+		}
+	}
+
+	// .hero__content
+
+	&__content {
+		text-align: center;
+		color: #fff;
+		display: flex;
+		flex-direction: column;
+		gap: toRem(15);
+		justify-content: center;
+		align-items: center;
+	}
+
+	// .hero__label
+
+	&__label {
+		font-weight: 500;
+		text-transform: uppercase;
+		line-height: 1.5em;
+	}
+
+	// .hero__title
+
+	&__title {
+		font-family: "Inter";
+		@include adaptiveValue("font-size", 65, 35);
+		line-height: 1.2em;
+		text-transform: capitalize;
+		font-weight: 700;
+	}
+
+	// .hero__text
+
+	&__text {
+		line-height: 1.4em;
+	}
+
+	// .hero__image
+
+	&__image {
+		max-width: toRem(850);
+		z-index: 2;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+.shape-fill {
+	fill: #fff;
+	transform-origin: center;
+	height: 100%;
+	width: 100%; /* Переконайтеся, що заповнює всю ширину */
+}
+
+//====================FEATURES===========================
+
+.features {
+	@include adaptiveValue("padding-top", 100, 50);
+	@include adaptiveValue("padding-bottom", 100, 50);
+	// .features__container
+
+	&__container {
+		max-width: toRem(1150);
+	}
+
+	// .features__label
+
+	&__label {
+		margin: 0 auto;
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 25, 15);
+		}
+	}
+
+	// .features__title
+
+	&__title {
+		text-align: center;
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 50, 30);
+		}
+	}
+
+	// .features__wrapper
+
+	&__wrapper {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: toRem(30);
+	}
+
+	// .features__item
+
+	&__item {
+	}
+}
+.label {
+	width: fit-content;
+	background-color: #eaf1ff;
+	padding: toRem(6) toRem(14) toRem(6) toRem(14);
+	border-radius: toRem(10) 0 toRem(10) 0;
+	color: #4143a3;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+.title {
+	font-family: "Inter";
+	color: #21225b;
+	font-weight: 700;
+	@include adaptiveValue("font-size", 38, 25);
+}
+.item-features {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+	@include adaptiveValue("padding-left", 30, 15);
+	@include adaptiveValue("padding-right", 30, 15);
+	text-align: left;
+	box-shadow: 0 0 toRem(40) 0 rgba(0, 0, 0, 0.05);
+	border-style: none;
+	height: fit-content;
+	border-radius: toRem(20) 0 toRem(20) 0;
+	background-color: #fff;
+	transition: all 0.4s;
+	display: flex;
+	flex-direction: column;
+	@media (max-width: toEm(480)) {
+		align-items: center;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			border-radius: 0;
+			background-color: #4143a3;
+
+			.item-features__icon {
+				background-color: #fff;
+			}
+			.item-features__text {
+				color: #fff;
+			}
+			.item-features__title {
+				color: #fff;
+			}
+		}
+	}
+	&:nth-child(2) {
+		background-color: #4143a3;
+		.item-features__icon {
+			background-color: #fff;
+		}
+		.item-features__text {
+			color: #fff;
+		}
+		.item-features__title {
+			color: #fff;
+		}
+	}
+	&:nth-child(even) {
+		margin-top: toRem(50);
+		@media (max-width: toEm(1040)) {
+			margin-top: 0;
+		}
+	}
+	&:nth-child(odd) {
+		margin-bottom: toRem(50);
+		@media (max-width: toEm(1040)) {
+			margin-bottom: 0;
+		}
+	}
+	// .item-features__icon
+
+	&__icon {
+		width: toRem(80);
+		height: toRem(80);
+		border-radius: 50%;
+		background-color: #eaf1ff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: background-color 0.3s;
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 25, 15);
+		}
+		img {
+			width: toRem(40);
+			height: toRem(40);
+		}
+	}
+
+	// .item-features__title
+
+	&__title {
+		font-family: "Inter";
+		color: #21225b;
+		@include adaptiveValue("font-size", 19, 18);
+		line-height: 1.2em;
+		transition: color 0.3s;
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+
+	// .item-features__text
+
+	&__text {
+		color: #8b8b8b;
+		line-height: 1.4em;
+		transition: color 0.3s;
+		@media (max-width: toEm(480)) {
+			text-align: center;
 		}
 	}
 }
