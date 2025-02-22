@@ -90,7 +90,11 @@ body {
 	left: 0;
 	width: 100%;
 	z-index: 55;
+	transition: padding-top 0.3s ease;
 
+	&.scrolled {
+		padding-top: toRem(10);
+	}
 	// .header__container
 
 	&__container {
@@ -500,6 +504,7 @@ body {
 //====================FEATURES===========================
 
 .features {
+	scroll-margin-top: toRem(70);
 	@include adaptiveValue("padding-top", 100, 50);
 	@include adaptiveValue("padding-bottom", 100, 50);
 	// .features__container
@@ -662,6 +667,7 @@ body {
 //=====================PARTNERS===========================
 
 .partners {
+	scroll-margin-top: toRem(120);
 	// .partners__container
 
 	&__container {

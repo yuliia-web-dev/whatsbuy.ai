@@ -192,6 +192,8 @@ body.menu-open {
   left: 0;
   width: 100%;
   z-index: 55;
+  -webkit-transition: padding-top 0.3s ease;
+  transition: padding-top 0.3s ease;
 }
 @media (min-width: 75em) {
   .header {
@@ -214,6 +216,9 @@ body.menu-open {
   .header {
     padding-top: 0.625rem;
   }
+}
+.header.scrolled {
+  padding-top: 0.625rem;
 }
 .header__container {
   max-width: 81.25rem;
@@ -945,6 +950,9 @@ body.menu-open {
   width: 100%; /* Переконайтеся, що заповнює всю ширину */
 }
 
+.features {
+  scroll-margin-top: 4.375rem;
+}
 @media (min-width: 75em) {
   .features {
     padding-top: 6.25rem;
@@ -1335,6 +1343,9 @@ body.menu-open {
   }
 }
 
+.partners {
+  scroll-margin-top: 7.5rem;
+}
 .partners__container {
   max-width: 71.875rem;
 }
