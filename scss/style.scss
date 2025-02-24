@@ -287,11 +287,11 @@ body {
 //=========================HERO SECTION================================
 
 .hero {
-	@include adaptiveValue("padding-top", 100, 100);
+	@include adaptiveValue("padding-top", 100, 70);
 	min-height: 90vh;
 	position: relative;
 	background-color: transparent;
-	background-image: linear-gradient(180deg, #1a659e 0%, #1a659e 100%);
+	background-image: linear-gradient(180deg, #1a659e 0%, #095188 100%);
 	overflow: hidden;
 	background-position: cover;
 	@media (max-width: toEm(890)) {
@@ -685,6 +685,7 @@ body {
 	gap: toRem(15);
 	width: 100%;
 	max-width: toRem(590);
+
 	@media (max-width: toRem(845)) {
 		max-width: 100%;
 	}
@@ -697,6 +698,12 @@ body {
 		height: 100%;
 		max-height: toRem(65);
 		object-fit: cover;
+		@media (max-width: toRem(620)) {
+			flex: 1 1 calc(50% - toRem(20));
+		}
+			@media (max-width: toRem(420)) {
+			flex: 1 1 100%;
+		}
 	}
 }
 .counter {
@@ -1660,8 +1667,8 @@ body {
 		&:not(:last-child) {
 			margin-bottom: toRem(30);
 			@media (max-width: toEm(480)) {
-			margin-bottom: toRem(15);
-		}
+				margin-bottom: toRem(15);
+			}
 		}
 	}
 
@@ -1673,8 +1680,8 @@ body {
 		&:not(:last-child) {
 			margin-bottom: toRem(40);
 			@media (max-width: toEm(480)) {
-			margin-bottom: toRem(20);
-		}
+				margin-bottom: toRem(20);
+			}
 		}
 	}
 
