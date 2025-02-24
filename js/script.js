@@ -47,17 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-window.addEventListener('scroll', function () {
-	const header = document.querySelector('.header');
-	if (window.scrollY > 0) {
-		header.classList.add('scrolled');
-	} else {
-		header.classList.remove('scrolled');
-	}
-});
 
 
-// let arrow = document.getElementById("line");
+// let arrow = document.getElementById("arrow");
 
 // console.log(arrow.getTotalLength());
 
@@ -133,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-	if (document.body.scrollTop > 100 || document.documentElement.scrollTop >100){
+	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
 		document.getElementById("scrollToTopBtn").classList.add("visible");
 	} else {
 		document.getElementById("scrollToTopBtn").classList.remove("visible");
@@ -196,4 +188,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+//===============swiper==================
+document.addEventListener('DOMContentLoaded', function () {
+	const newSlider = new Swiper('.reviews__swiper', {
+		slidesPerView: 1,
+		spaceBetween: 20,
+		loop: true,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: false,
+		}
+	});
+});
