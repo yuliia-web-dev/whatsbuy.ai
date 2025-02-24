@@ -1432,7 +1432,7 @@ body {
 		padding: toRem(15) toRem(30) toRem(30) toRem(30);
 		border: toRem(1) solid #aca5a55d;
 		border-radius: toRem(20) toRem(0) toRem(20) toRem(0);
-		@media (max-width: toEm(480)) {
+		@media (max-width: toEm(900)) {
 			max-width: 100%;
 			padding: toRem(10);
 		}

@@ -2727,7 +2727,7 @@ body.menu-open {
   border: 0.0625rem solid rgba(172, 165, 165, 0.3647058824);
   border-radius: 1.25rem 0rem 1.25rem 0rem;
 }
-@media (max-width: 30em) {
+@media (max-width: 56.25em) {
   .faq__left-part {
     max-width: 100%;
     padding: 0.625rem;
