@@ -49,10 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// let arrow = document.getElementById("arrow");
-
-// console.log(arrow.getTotalLength());
-
 
 //========================================
 
@@ -202,5 +198,83 @@ document.addEventListener('DOMContentLoaded', function () {
 			delay: 5000,
 			disableOnInteraction: false,
 		}
+	});
+});
+
+
+//==============FAQ===================
+
+document.querySelectorAll('.faq__item').forEach(item => {
+	const header = item.querySelector('.item-faq__header');
+	const answer = item.querySelector('.item-faq__answer');
+
+	header.addEventListener('click', () => {
+		const isOpen = item.classList.toggle('open');
+
+		if (isOpen) {
+			answer.style.height = answer.scrollHeight + 'px';
+
+			// Додаємо обробник, щоб потім поставити height: auto для адаптації
+			answer.addEventListener('transitionend', function onOpen() {
+				answer.style.height = 'auto';
+				answer.removeEventListener('transitionend', onOpen);
+			});
+		} else {
+			// Перед закриттям фіксуємо поточну висоту, щоб уникнути різкого стрибка
+			answer.style.height = answer.scrollHeight + 'px';
+
+			setTimeout(() => {
+				answer.style.height = '0px';
+			}, 10);
+		}
+	});
+
+	// Додаємо MutationObserver для відстеження змін у відповіді
+	const observer = new MutationObserver(() => {
+		if (item.classList.contains('open')) {
+			answer.style.height = answer.scrollHeight + 'px';
+		}
+	});
+
+	observer.observe(answer, { childList: true, subtree: true });
+});
+
+
+//======================POPUP=================
+
+document.addEventListener("DOMContentLoaded", function () {
+	const popup = document.getElementById("popup");
+	const button = document.querySelector(".faq__button");
+	const close = document.querySelector(".popup__close");
+	const form = document.querySelector(".popup__form");
+
+	button.addEventListener("click", function (e) {
+		e.preventDefault();
+		popup.classList.add("active");
+	});
+
+	close.addEventListener("click", function () {
+		popup.classList.remove("active");
+	});
+
+	popup.addEventListener("click", function (e) {
+		if (e.target === popup) {
+			popup.classList.remove("active");
+		}
+	});
+
+	// Відправка форми
+	form.addEventListener("submit", function (e) {
+		e.preventDefault();
+
+		// Тут можна додати реальну логіку відправки форми
+
+		alert("Message Sent!");
+
+		// Очищення форми після відправки
+		form.reset();
+
+		// Закриття попапа після відправки
+		popup.classList.remove("active");
 	});
 });
