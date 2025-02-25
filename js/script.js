@@ -53,6 +53,35 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
+//==================HERO ANIMATION=====================
+
+const words = ["Simple", "Fast", "Organized"];
+let index = 0;
+const changingWord = document.querySelector(".changing-word");
+
+if (changingWord) { 
+	function animateText(newWord) {
+		const letters = newWord.split("").map((char, i) =>
+			`<span class="letter" style="animation-delay: ${i * 0.1}s">${char}</span>`
+		).join("");
+
+		changingWord.innerHTML = letters;
+	}
+
+	function changeWord() {
+		index = (index + 1) % words.length;
+		changingWord.classList.add("fade-out");
+
+		setTimeout(() => {
+			changingWord.textContent = words[index];
+			animateText(words[index]);
+			changingWord.classList.remove("fade-out");
+		}, 500);
+	}
+
+	animateText(words[index]);
+	setInterval(changeWord, 3000);
+}
 
 
 //====================MOVE HEADER BUTTON TO BURGER MENU========================
@@ -316,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//=======================VIDEO=========================
 
 
-//================================================================
+
+

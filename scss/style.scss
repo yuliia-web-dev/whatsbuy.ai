@@ -39,7 +39,7 @@ body {
 	}
 }
 .no-scroll {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .wrapper {
@@ -67,7 +67,7 @@ body {
 	border: 0.5px solid #fff;
 	width: toRem(50);
 	height: toRem(50);
-	background-color: #135688;
+	background-color: var(--dark--accent-color);
 	border-radius: 50%;
 	transition:
 		opacity 0.3s ease,
@@ -372,6 +372,12 @@ body {
 		line-height: 1.2em;
 		text-transform: capitalize;
 		font-weight: 700;
+		display: flex;
+		flex-direction: column;
+		gap: toRem(15);
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 
 	// .hero__text
@@ -399,6 +405,36 @@ body {
 	height: 100%;
 	width: 100%; /* Переконайтеся, що заповнює всю ширину */
 }
+.changing-word {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  font-size: inherit;
+  text-transform: none;
+}
+
+.letter {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: wave 0.6s forwards;
+}
+
+@keyframes wave {
+  0% { transform: translateY(100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10%); }
+}
+
 
 //====================FEATURES===========================
 
@@ -777,8 +813,8 @@ body {
 	@include adaptiveValue("padding-bottom", 100, 50);
 	&--padding {
 		padding-top: toRem(250);
-			@media(max-width: toEm(760)){
-			@include adaptiveValue("padding-top", 260, 150, $widthFrom:760);
+		@media (max-width: toEm(760)) {
+			@include adaptiveValue("padding-top", 260, 150, $widthFrom: 760);
 		}
 	}
 	&--background {
@@ -1111,7 +1147,7 @@ body {
 	// .advantages__title
 
 	&__title {
-		@media(max-width:toEm(665)){
+		@media (max-width: toEm(665)) {
 			text-align: center;
 		}
 		&:not(:last-child) {
@@ -1229,8 +1265,8 @@ body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		@media(max-width: toEm(760)){
-			@include adaptiveValue("padding-bottom", 300, 120, $widthFrom:760);
+		@media (max-width: toEm(760)) {
+			@include adaptiveValue("padding-bottom", 300, 120, $widthFrom: 760);
 		}
 	}
 	// .dashboard__title
@@ -1262,41 +1298,41 @@ body {
 		width: 100%;
 		object-fit: cover;
 	}
-	&__button {
-		@include adaptiveValue("width", 56, 30);
-		@include adaptiveValue("height", 56, 30);
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		border-radius: 50%;
-		background: rgba(160, 156, 144, 0.6);
-		backdrop-filter: blur(20px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		z-index: 6;
-		transition:
-			opacity 0.3s ease,
-			visibility 0.3s ease;
-		@media (max-width: toEm(767.98)) {
-			display: none;
-		}
+	// &__button {
+	// 	@include adaptiveValue("width", 56, 30);
+	// 	@include adaptiveValue("height", 56, 30);
+	// 	position: absolute;
+	// 	top: 50%;
+	// 	left: 50%;
+	// 	transform: translate(-50%, -50%);
+	// 	border-radius: 50%;
+	// 	background: rgba(160, 156, 144, 0.6);
+	// 	backdrop-filter: blur(20px);
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	z-index: 6;
+	// 	transition:
+	// 		opacity 0.3s ease,
+	// 		visibility 0.3s ease;
+	// 	@media (max-width: toEm(767.98)) {
+	// 		display: none;
+	// 	}
 
-		@media (any-hover: hover) {
-			&:hover {
-				svg {
-					transform: scale(1.1);
-				}
-			}
-		}
-		svg {
-			will-change: transform;
-			transition: transform 0.3s;
-			@include adaptiveValue("width", 18, 8);
-			@include adaptiveValue("height", 18, 8);
-		}
-	}
+	// 	@media (any-hover: hover) {
+	// 		&:hover {
+	// 			svg {
+	// 				transform: scale(1.1);
+	// 			}
+	// 		}
+	// 	}
+	// 	svg {
+	// 		will-change: transform;
+	// 		transition: transform 0.3s;
+	// 		@include adaptiveValue("width", 18, 8);
+	// 		@include adaptiveValue("height", 18, 8);
+	// 	}
+	// }
 }
 
 //===========================	REVIEWS====================
