@@ -267,21 +267,34 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Check if all required elements exist
 	if (!popup || !button || !close || !form) return;
 
+	// Add class to body to prevent scroll jump
+	const addBodyOverflowClass = () => {
+		const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+		body.style.paddingRight = `${scrollbarWidth}px`;
+		body.classList.add("no-scroll");
+	};
+
+	// Remove class to revert scroll behavior
+	const removeBodyOverflowClass = () => {
+		body.style.paddingRight = "";
+		body.classList.remove("no-scroll");
+	};
+
 	button.addEventListener("click", function (e) {
 		e.preventDefault();
 		popup.classList.add("active");
-		body.style.overflow = "hidden"; // Disable scrolling when popup is open
+		addBodyOverflowClass(); // Disable scrolling and avoid jump
 	});
 
 	close.addEventListener("click", function () {
 		popup.classList.remove("active");
-		body.style.overflow = ""; // Enable scrolling when popup is closed
+		removeBodyOverflowClass(); // Enable scrolling
 	});
 
 	popup.addEventListener("click", function (e) {
 		if (e.target === popup) {
 			popup.classList.remove("active");
-			body.style.overflow = ""; // Enable scrolling when clicking outside the popup
+			removeBodyOverflowClass(); // Enable scrolling
 		}
 	});
 
@@ -298,84 +311,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Close the popup after submission
 		popup.classList.remove("active");
-		body.style.overflow = "";
+		removeBodyOverflowClass(); // Enable scrolling
 	});
 });
 
 
 //=======================VIDEO=========================
-function togglePlayPause(video, playButton) {
-	if (!video || !playButton) return; // Ensure both video and button exist
-
-	if (video.paused) {
-		// Play the video
-		video.play().catch(error => {
-			console.error('Play video failed:', error);
-		});
-		// Hide the play button when the video plays
-		playButton.style.opacity = '0';
-		playButton.style.pointerEvents = 'none';
-	} else {
-		// Pause the video
-		video.pause();
-		// Show the play button when the video pauses
-		playButton.style.opacity = '1';
-		playButton.style.pointerEvents = 'auto';
-	}
-}
-
-// Handle click on the play button
-document.addEventListener('click', function (event) {
-	if (!isTouchDevice() && event.target.classList.contains('video__button')) {
-		event.preventDefault(); // Prevent default click action
-		let video = event.target.closest('.video').querySelector('video');
-		let playButton = event.target;
-		togglePlayPause(video, playButton);
-	} else if (event.target.tagName === 'VIDEO') {
-		// Handle clicking on the video itself
-		let video = event.target;
-		let playButton = video.closest('.video').querySelector('.video__button');
-		togglePlayPause(video, playButton);
-	} else {
-		// Pause the video if click is outside of the video and play button
-		let video = document.querySelector('.video video');
-		let playButton = document.querySelector('.video__button');
-		if (video && playButton && !video.contains(event.target) && !playButton.contains(event.target)) {
-			video.pause();
-			playButton.style.opacity = '1';
-			playButton.style.pointerEvents = 'auto';
-		}
-	}
-});
-
-// Handle touchend event for touch devices
-document.addEventListener('touchend', function (event) {
-	if (event.target.tagName === 'VIDEO') {
-		event.stopPropagation(); // Stop event propagation
-		let video = event.target;
-		let playButton = video.closest('.video').querySelector('.video__button');
-		togglePlayPause(video, playButton);
-	} else if (event.target.classList.contains('video__button')) {
-		event.preventDefault(); // Prevent default touch behavior
-		let video = event.target.closest('.video').querySelector('video');
-		let playButton = event.target;
-		togglePlayPause(video, playButton);
-	} else {
-		// Pause the video if touch is outside of the video and play button
-		let video = document.querySelector('.video video');
-		let playButton = document.querySelector('.video__button');
-		if (video && playButton && !video.contains(event.target) && !playButton.contains(event.target)) {
-			video.pause();
-			playButton.style.opacity = '1';
-			playButton.style.pointerEvents = 'auto';
-		}
-	}
-});
-
-// Detect if the device supports touch events
-function isTouchDevice() {
-	return 'ontouchstart' in window || navigator.maxTouchPoints;
-}
 
 
 //================================================================
