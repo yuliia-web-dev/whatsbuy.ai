@@ -3,7 +3,7 @@
 // Кольори
 :root {
 	--light-accent-color: #1a659e;
-	--dark--accent-color: #095188;
+	--dark-accent-color: #095188;
 }
 // Функції
 @import "_functions.scss";
@@ -67,7 +67,7 @@ body {
 	border: 0.5px solid #fff;
 	width: toRem(50);
 	height: toRem(50);
-	background-color: var(--dark--accent-color);
+	background-color: var(--dark-accent-color);
 	border-radius: 50%;
 	transition:
 		opacity 0.3s ease,
@@ -201,7 +201,7 @@ body {
 	&__link {
 		position: relative;
 		font-size: toRem(16);
-		color: var(--dark--accent-color);
+		color: var(--dark-accent-color);
 		transition: color 0.3s;
 		text-transform: uppercase;
 		line-height: 1.22em;
@@ -216,7 +216,7 @@ body {
 		position: relative;
 		width: toRem(33);
 		height: toRem(33);
-		background-color: var(--dark--accent-color);
+		background-color: var(--dark-accent-color);
 		border: none;
 		padding: toRem(8) toRem(5.5);
 		appearance: none;
@@ -272,7 +272,7 @@ body {
 	}
 	&--dark {
 		color: #fff;
-		background-color: var(--dark--accent-color);
+		background-color: var(--dark-accent-color);
 
 		@media (any-hover: hover) {
 			&:hover {
@@ -298,7 +298,7 @@ body {
 	min-height: 90vh;
 	position: relative;
 	background-color: transparent;
-	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark--accent-color) 100%);
+	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark-accent-color) 100%);
 	overflow: hidden;
 	@media (max-width: toEm(890)) {
 		min-height: toRem(500);
@@ -490,7 +490,7 @@ body {
 }
 .title {
 	font-family: "Inter";
-	color: var(--dark--accent-color);
+	color: var(--dark-accent-color);
 	font-weight: 700;
 	@include adaptiveValue("font-size", 38, 25);
 	&--white {
@@ -578,7 +578,7 @@ body {
 
 	&__title {
 		font-family: "Inter";
-		color: var(--dark--accent-color);
+		color: var(--dark-accent-color);
 		@include adaptiveValue("font-size", 19, 18);
 		line-height: 1.2em;
 		transition: color 0.3s;
@@ -620,7 +620,7 @@ body {
 		@include adaptiveValue("padding-bottom", 42, 20);
 		@include adaptiveValue("padding-left", 50, 20);
 		@include adaptiveValue("padding-right", 50, 20);
-		background-image: linear-gradient(90deg, var(--light-accent-color) 0%, var(--dark--accent-color) 100%);
+		background-image: linear-gradient(90deg, var(--light-accent-color) 0%, var(--dark-accent-color) 100%);
 		border-radius: toRem(20) 0 0 0;
 		display: flex;
 		justify-content: space-between;
@@ -924,7 +924,7 @@ body {
 			width: toRem(10);
 			height: toRem(6);
 			border-left: toRem(2) solid var(--dark--accent-color);
-			border-bottom: toRem(2) solid var(--dark--accent-color);
+			border-bottom: toRem(2) solid var(--dark-accent-color);
 			transform: rotate(-45deg);
 			margin-top: toRem(5);
 			flex-shrink: 0;
@@ -1298,41 +1298,7 @@ body {
 		width: 100%;
 		object-fit: cover;
 	}
-	// &__button {
-	// 	@include adaptiveValue("width", 56, 30);
-	// 	@include adaptiveValue("height", 56, 30);
-	// 	position: absolute;
-	// 	top: 50%;
-	// 	left: 50%;
-	// 	transform: translate(-50%, -50%);
-	// 	border-radius: 50%;
-	// 	background: rgba(160, 156, 144, 0.6);
-	// 	backdrop-filter: blur(20px);
-	// 	display: flex;
-	// 	align-items: center;
-	// 	justify-content: center;
-	// 	z-index: 6;
-	// 	transition:
-	// 		opacity 0.3s ease,
-	// 		visibility 0.3s ease;
-	// 	@media (max-width: toEm(767.98)) {
-	// 		display: none;
-	// 	}
 
-	// 	@media (any-hover: hover) {
-	// 		&:hover {
-	// 			svg {
-	// 				transform: scale(1.1);
-	// 			}
-	// 		}
-	// 	}
-	// 	svg {
-	// 		will-change: transform;
-	// 		transition: transform 0.3s;
-	// 		@include adaptiveValue("width", 18, 8);
-	// 		@include adaptiveValue("height", 18, 8);
-	// 	}
-	// }
 }
 
 //===========================	REVIEWS====================
@@ -1507,7 +1473,7 @@ body {
 	width: toRem(36);
 	height: toRem(12);
 	border-radius: toRem(7);
-	background: var(--dark--accent-color);
+	background: var(--dark-accent-color);
 	transition: all 0.3s ease;
 	@media (max-width: toEm(480)) {
 		height: toRem(10);
@@ -1830,7 +1796,7 @@ body {
 
 .footer {
 	background-color: transparent;
-	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark--accent-color) 100%);
+	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark-accent-color) 100%);
 	border-radius: toRem(50) 0 0 0;
 	padding-top: toRem(150);
 	@include adaptiveValue("padding-bottom", 40, 20);
@@ -1930,7 +1896,7 @@ body {
 		transition: background-color 0.3s;
 		@media (any-hover: hover) {
 			&:hover {
-				background-color: var(--dark--accent-color);
+				background-color: var(--dark-accent-color);
 			}
 		}
 		&::before {
