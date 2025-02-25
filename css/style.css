@@ -3132,7 +3132,7 @@ body.menu-open {
 }
 .download__body {
   border-radius: 1.25rem 0 1.25rem 0;
-  background-color: var(--dark--accent-color);
+  background-color: var(--dark-accent-color);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
