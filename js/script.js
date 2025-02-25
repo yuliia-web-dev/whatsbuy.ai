@@ -1,24 +1,30 @@
 "use strict"
+
+
+//========BURGER MENU=====================================
+
 document.addEventListener("DOMContentLoaded", () => {
 	const iconMenu = document.querySelector(".icon-menu");
 	const menuBody = document.querySelector(".menu__body");
 
+	// Toggling the menu open/close when the icon is clicked
 	iconMenu.addEventListener("click", () => {
 		if (window.innerWidth <= 1150) {
 			iconMenu.classList.toggle("active");
 			document.body.classList.toggle("menu-open");
 
 			if (document.body.classList.contains("menu-open")) {
-				// Отримуємо реальну висоту меню
+				// Get the actual height of the menu
 				const maxMenuHeight = Math.min(window.innerHeight * 0.8, menuBody.scrollHeight);
 				menuBody.style.maxHeight = `${maxMenuHeight}px`;
 			} else {
+				// Set the menu height to 0 when it's closed
 				menuBody.style.maxHeight = "0px";
 			}
 		}
 	});
 
-	// Закриваємо меню при кліку на посилання
+	// Close the menu when a link is clicked
 	document.addEventListener("click", (e) => {
 		const targetElement = e.target;
 		if (targetElement.closest(".menu") && targetElement.tagName === "A") {
@@ -29,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		}
 
-		// Закриваємо меню, якщо клік поза ним
+		// Close the menu if clicked outside of it
 		if (!targetElement.closest(".icon-menu") && !targetElement.closest(".menu") && window.innerWidth <= 1150) {
 			document.body.classList.remove("menu-open");
 			iconMenu.classList.remove("active");
@@ -37,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	// Закриваємо меню при зміні розміру екрану
+	// Close the menu when resizing the window
 	window.addEventListener("resize", () => {
 		if (window.innerWidth > 1150) {
 			document.body.classList.remove("menu-open");
@@ -49,8 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-//========================================
+//====================MOVE HEADER BUTTON TO BURGER MENU========================
 
 document.addEventListener("DOMContentLoaded", function () {
 	function moveElements() {
@@ -116,33 +121,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//===========================
+//==============SCROLL TO TOP=============
 
-window.onscroll = function () { scrollFunction() };
+window.onscroll = function () {
+	const scrollBtn = document.getElementById("scrollToTopBtn");
+	if (!scrollBtn) return;
 
-function scrollFunction() {
-	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-		document.getElementById("scrollToTopBtn").classList.add("visible");
-	} else {
-		document.getElementById("scrollToTopBtn").classList.remove("visible");
-	}
-}
+	scrollBtn.classList.toggle("visible", window.scrollY > 100);
+};
 
-document.getElementById("scrollToTopBtn").onclick = function () { topFunction() };
+document.addEventListener("DOMContentLoaded", function () {
+	const scrollBtn = document.getElementById("scrollToTopBtn");
+	if (!scrollBtn) return;
 
-function topFunction() {
-	window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+	scrollBtn.onclick = function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+});
 
 
-//=================================================
+//=======================COUNTER====================
 
 document.addEventListener('DOMContentLoaded', () => {
 	const counters = document.querySelectorAll('.item-counter');
 
-	// Функція для анімації чисел
+	if (!counters.length) return; // Exit if no counters are found
+
+	// Function to animate numbers
 	const animateCounter = (element) => {
+		if (!element) return; // Ensure the element exists
+
 		const target = +element.getAttribute('data-count');
+		if (isNaN(target) || target <= 0) return; // Validate target number
+
 		let count = 0;
 		const increment = target / 100;
 
@@ -153,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				count = target;
 			}
 
-			// Додавання "M" для чисел більше 1 мільйона
+			// Add "M" for numbers greater than 1 million
 			if (target >= 1000000) {
 				element.textContent = Math.floor(count / 1000000) + "M+";
 			} else {
@@ -162,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}, 10);
 	};
 
-	// Перевірка видимості елемента за допомогою IntersectionObserver
+	// Check element visibility using IntersectionObserver
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
@@ -178,66 +189,70 @@ document.addEventListener('DOMContentLoaded', () => {
 		threshold: 0.5
 	});
 
-	counters.forEach(counter => {
-		observer.observe(counter);
-	});
+	// Observe each counter element
+	counters.forEach(counter => observer.observe(counter));
 });
 
 
-//===============swiper==================
+//===============SWIPER==================
 document.addEventListener('DOMContentLoaded', function () {
-	const newSlider = new Swiper('.reviews__swiper', {
-		slidesPerView: 1,
-		spaceBetween: 20,
-		loop: true,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-		autoplay: {
-			delay: 5000,
-			disableOnInteraction: false,
-		}
-	});
+	const swiperContainer = document.querySelector('.reviews__swiper');
+	if (swiperContainer) {
+		const newSlider = new Swiper('.reviews__swiper', {
+			slidesPerView: 1,
+			spaceBetween: 20,
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			}
+		});
+	}
 });
-
 
 //==============FAQ===================
 
-document.querySelectorAll('.faq__item').forEach(item => {
-	const header = item.querySelector('.item-faq__header');
-	const answer = item.querySelector('.item-faq__answer');
+const faqItems = document.querySelectorAll('.faq__item');
 
-	header.addEventListener('click', () => {
-		const isOpen = item.classList.toggle('open');
+if (faqItems.length > 0) {
+	faqItems.forEach(item => {
+		const header = item.querySelector('.item-faq__header');
+		const answer = item.querySelector('.item-faq__answer');
 
-		if (isOpen) {
-			answer.style.height = answer.scrollHeight + 'px';
+		if (!header || !answer) return; // Перевіряємо, чи елементи існують
 
-			// Додаємо обробник, щоб потім поставити height: auto для адаптації
-			answer.addEventListener('transitionend', function onOpen() {
-				answer.style.height = 'auto';
-				answer.removeEventListener('transitionend', onOpen);
-			});
-		} else {
-			// Перед закриттям фіксуємо поточну висоту, щоб уникнути різкого стрибка
-			answer.style.height = answer.scrollHeight + 'px';
+		header.addEventListener('click', () => {
+			const isOpen = item.classList.toggle('open');
 
-			setTimeout(() => {
-				answer.style.height = '0px';
-			}, 10);
-		}
+			if (isOpen) {
+				answer.style.height = answer.scrollHeight + 'px';
+
+				answer.addEventListener('transitionend', function onOpen() {
+					answer.style.height = 'auto';
+					answer.removeEventListener('transitionend', onOpen);
+				});
+			} else {
+				answer.style.height = answer.scrollHeight + 'px';
+
+				setTimeout(() => {
+					answer.style.height = '0px';
+				}, 10);
+			}
+		});
+
+		const observer = new MutationObserver(() => {
+			if (item.classList.contains('open')) {
+				answer.style.height = answer.scrollHeight + 'px';
+			}
+		});
+
+		observer.observe(answer, { childList: true, subtree: true });
 	});
-
-	// Додаємо MutationObserver для відстеження змін у відповіді
-	const observer = new MutationObserver(() => {
-		if (item.classList.contains('open')) {
-			answer.style.height = answer.scrollHeight + 'px';
-		}
-	});
-
-	observer.observe(answer, { childList: true, subtree: true });
-});
+}
 
 
 //======================POPUP=================
@@ -247,34 +262,120 @@ document.addEventListener("DOMContentLoaded", function () {
 	const button = document.querySelector(".faq__button");
 	const close = document.querySelector(".popup__close");
 	const form = document.querySelector(".popup__form");
+	const body = document.body;
+
+	// Check if all required elements exist
+	if (!popup || !button || !close || !form) return;
 
 	button.addEventListener("click", function (e) {
 		e.preventDefault();
 		popup.classList.add("active");
+		body.style.overflow = "hidden"; // Disable scrolling when popup is open
 	});
 
 	close.addEventListener("click", function () {
 		popup.classList.remove("active");
+		body.style.overflow = ""; // Enable scrolling when popup is closed
 	});
 
 	popup.addEventListener("click", function (e) {
 		if (e.target === popup) {
 			popup.classList.remove("active");
+			body.style.overflow = ""; // Enable scrolling when clicking outside the popup
 		}
 	});
 
-	// Відправка форми
+	// Form submission handling
 	form.addEventListener("submit", function (e) {
 		e.preventDefault();
 
-		// Тут можна додати реальну логіку відправки форми
+		// Add actual form submission logic here
 
 		alert("Message Sent!");
 
-		// Очищення форми після відправки
+		// Clear the form after submission
 		form.reset();
 
-		// Закриття попапа після відправки
+		// Close the popup after submission
 		popup.classList.remove("active");
+		body.style.overflow = "";
 	});
 });
+
+
+//=======================VIDEO=========================
+function togglePlayPause(video, playButton) {
+	if (!video || !playButton) return; // Ensure both video and button exist
+
+	if (video.paused) {
+		// Play the video
+		video.play().catch(error => {
+			console.error('Play video failed:', error);
+		});
+		// Hide the play button when the video plays
+		playButton.style.opacity = '0';
+		playButton.style.pointerEvents = 'none';
+	} else {
+		// Pause the video
+		video.pause();
+		// Show the play button when the video pauses
+		playButton.style.opacity = '1';
+		playButton.style.pointerEvents = 'auto';
+	}
+}
+
+// Handle click on the play button
+document.addEventListener('click', function (event) {
+	if (!isTouchDevice() && event.target.classList.contains('video__button')) {
+		event.preventDefault(); // Prevent default click action
+		let video = event.target.closest('.video').querySelector('video');
+		let playButton = event.target;
+		togglePlayPause(video, playButton);
+	} else if (event.target.tagName === 'VIDEO') {
+		// Handle clicking on the video itself
+		let video = event.target;
+		let playButton = video.closest('.video').querySelector('.video__button');
+		togglePlayPause(video, playButton);
+	} else {
+		// Pause the video if click is outside of the video and play button
+		let video = document.querySelector('.video video');
+		let playButton = document.querySelector('.video__button');
+		if (video && playButton && !video.contains(event.target) && !playButton.contains(event.target)) {
+			video.pause();
+			playButton.style.opacity = '1';
+			playButton.style.pointerEvents = 'auto';
+		}
+	}
+});
+
+// Handle touchend event for touch devices
+document.addEventListener('touchend', function (event) {
+	if (event.target.tagName === 'VIDEO') {
+		event.stopPropagation(); // Stop event propagation
+		let video = event.target;
+		let playButton = video.closest('.video').querySelector('.video__button');
+		togglePlayPause(video, playButton);
+	} else if (event.target.classList.contains('video__button')) {
+		event.preventDefault(); // Prevent default touch behavior
+		let video = event.target.closest('.video').querySelector('video');
+		let playButton = event.target;
+		togglePlayPause(video, playButton);
+	} else {
+		// Pause the video if touch is outside of the video and play button
+		let video = document.querySelector('.video video');
+		let playButton = document.querySelector('.video__button');
+		if (video && playButton && !video.contains(event.target) && !playButton.contains(event.target)) {
+			video.pause();
+			playButton.style.opacity = '1';
+			playButton.style.pointerEvents = 'auto';
+		}
+	}
+});
+
+// Detect if the device supports touch events
+function isTouchDevice() {
+	return 'ontouchstart' in window || navigator.maxTouchPoints;
+}
+
+
+//================================================================

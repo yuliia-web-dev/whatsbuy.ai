@@ -1,7 +1,10 @@
 @use "sass:math";
 
 // Кольори
-
+:root {
+	--light-accent-color: #1a659e;
+	--dark--accent-color: #095188;
+}
 // Функції
 @import "_functions.scss";
 // Шрифти
@@ -17,7 +20,7 @@ $minWidth: 320;
 // Ширина полотна (макету)
 $maxWidth: 1920;
 // Ширина обмежуючого контейнера (0 = немає обмеження)
-$maxWidthContainer: 1170;
+$maxWidthContainer: 1140;
 // Загальний відступ у контейнера
 // (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
 $containerPadding: 30;
@@ -89,7 +92,7 @@ body {
 .header {
 	@include adaptiveValue("padding-top", 50, 10);
 	position: relative;
-	background-color: #1a659e;
+	background-color: var(--light-accent-color);
 	width: 100%;
 	transition: padding-top 0.3s ease;
 	// .header__container
@@ -184,7 +187,7 @@ body {
 		@media (any-hover: hover) {
 			&:hover {
 				.menu__link {
-					color: #1a659e;
+					color: var(--light-accent-color);
 				}
 			}
 		}
@@ -194,7 +197,7 @@ body {
 	&__link {
 		position: relative;
 		font-size: toRem(16);
-		color: #095188;
+		color: var(--dark--accent-color);
 		transition: color 0.3s;
 		text-transform: uppercase;
 		line-height: 1.22em;
@@ -209,7 +212,7 @@ body {
 		position: relative;
 		width: toRem(33);
 		height: toRem(33);
-		background-color: #095188;
+		background-color: var(--dark--accent-color);
 		border: none;
 		padding: toRem(8) toRem(5.5);
 		appearance: none;
@@ -261,22 +264,22 @@ body {
 
 	img {
 		width: toRem(25);
-		height: torem(15);
+		height: toRem(15);
 	}
 	&--dark {
 		color: #fff;
-		background-color: #095188;
+		background-color: var(--dark--accent-color);
 
 		@media (any-hover: hover) {
 			&:hover {
 				border-radius: toRem(20) toRem(20);
-				background-color: #1a659e;
+				background-color: var(--light-accent-color);
 			}
 		}
 	}
 	&--white {
 		background-color: #fff;
-		color: #1a659e;
+		color: var(--light-accent-color);
 		width: fit-content;
 		&:hover {
 			border-radius: toRem(20) toRem(20);
@@ -291,9 +294,8 @@ body {
 	min-height: 90vh;
 	position: relative;
 	background-color: transparent;
-	background-image: linear-gradient(180deg, #1a659e 0%, #095188 100%);
+	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark--accent-color) 100%);
 	overflow: hidden;
-	background-position: cover;
 	@media (max-width: toEm(890)) {
 		min-height: toRem(500);
 	}
@@ -442,13 +444,13 @@ body {
 	background-color: #eaf1ff;
 	padding: toRem(6) toRem(14) toRem(6) toRem(14);
 	border-radius: toRem(10) 0 toRem(10) 0;
-	color: #1a659e;
+	color: var(--light-accent-color);
 	font-weight: 500;
 	text-transform: uppercase;
 }
 .title {
 	font-family: "Inter";
-	color: #095188;
+	color: var(--dark--accent-color);
 	font-weight: 700;
 	@include adaptiveValue("font-size", 38, 25);
 	&--white {
@@ -475,7 +477,7 @@ body {
 	@media (any-hover: hover) {
 		&:hover {
 			border-radius: 0;
-			background-color: #1a659e;
+			background-color: var(--light-accent-color);
 
 			.item-features__icon {
 				background-color: #fff;
@@ -489,7 +491,7 @@ body {
 		}
 	}
 	&:nth-child(2) {
-		background-color: #1a659e;
+		background-color: var(--light-accent-color);
 		.item-features__icon {
 			background-color: #fff;
 		}
@@ -536,7 +538,7 @@ body {
 
 	&__title {
 		font-family: "Inter";
-		color: #095188;
+		color: var(--dark--accent-color);
 		@include adaptiveValue("font-size", 19, 18);
 		line-height: 1.2em;
 		transition: color 0.3s;
@@ -578,7 +580,7 @@ body {
 		@include adaptiveValue("padding-bottom", 42, 20);
 		@include adaptiveValue("padding-left", 50, 20);
 		@include adaptiveValue("padding-right", 50, 20);
-		background-image: linear-gradient(90deg, #1a659e 0%, #1a659e 100%);
+		background-image: linear-gradient(90deg, var(--light-accent-color) 0%, var(--dark--accent-color) 100%);
 		border-radius: toRem(20) 0 0 0;
 		display: flex;
 		justify-content: space-between;
@@ -631,7 +633,7 @@ body {
 		@include adaptiveValue("padding-bottom", 57, 20);
 		@include adaptiveValue("padding-left", 50, 20);
 		@include adaptiveValue("padding-right", 50, 20);
-		background-color: #1a659e;
+		background-color: var(--light-accent-color);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -769,6 +771,12 @@ body {
 .about {
 	@include adaptiveValue("padding-top", 100, 50);
 	@include adaptiveValue("padding-bottom", 100, 50);
+	&--padding {
+		padding-top: toRem(250);
+			@media(max-width: toEm(760)){
+			@include adaptiveValue("padding-top", 260, 150, $widthFrom:760);
+		}
+	}
 	&--background {
 		position: relative;
 		z-index: 1;
@@ -875,10 +883,11 @@ body {
 			content: "";
 			width: toRem(10);
 			height: toRem(6);
-			border-left: toRem(2) solid #095188;
-			border-bottom: toRem(2) solid #095188;
+			border-left: toRem(2) solid var(--dark--accent-color);
+			border-bottom: toRem(2) solid var(--dark--accent-color);
 			transform: rotate(-45deg);
 			margin-top: toRem(5);
+			flex-shrink: 0;
 		}
 
 		&:not(:last-child) {
@@ -925,7 +934,7 @@ body {
 	}
 	&__title {
 		font-family: "Inter";
-		color: #1a659e;
+		color: var(--light-accent-color);
 		font-size: toRem(19);
 		font-weight: 700;
 		text-transform: capitalize;
@@ -934,7 +943,6 @@ body {
 		width: toRem(30);
 		height: toRem(30);
 		flex-shrink: 0;
-		background-repeat: 50%;
 	}
 }
 
@@ -1016,7 +1024,7 @@ body {
 	&__title {
 		@include adaptiveValue("font-size", 22, 19);
 		font-family: "Inter";
-		color: #095188;
+		color: var(--dark--accent-color);
 		font-weight: 700;
 		line-height: 1.2;
 		text-transform: capitalize;
@@ -1071,7 +1079,7 @@ body {
 
 	&__container {
 		max-width: toRem(1170);
-		background-image: linear-gradient(90deg, #1a659e 0%, #1a659e 100%);
+		background-image: linear-gradient(90deg, var(--light-accent-color) 0%, var(--light-accent-color) 100%);
 		border-radius: toRem(20) 0 0 0;
 		position: relative;
 		&::before {
@@ -1099,6 +1107,9 @@ body {
 	// .advantages__title
 
 	&__title {
+		@media(max-width:toEm(665)){
+			text-align: center;
+		}
 		&:not(:last-child) {
 			margin-bottom: toRem(50);
 		}
@@ -1184,17 +1195,19 @@ body {
 //==================DASHBOARD====================
 
 .dashboard {
+	position: relative;
+
 	// .dashboard__container
 
 	&__container {
-		background-color: #1a659e;
+		background-color: var(--light-accent-color);
 		border-radius: 0 0 toRem(20) 0;
 		max-width: toRem(1170);
 		position: relative;
 		&::before {
 			content: "";
 			position: absolute;
-			bottom: -50%;
+			bottom: -30%;
 			left: 0;
 			width: 100%;
 			height: 100%;
@@ -1208,22 +1221,76 @@ body {
 	}
 	&__body {
 		padding-top: toRem(80);
+		padding-bottom: toRem(350);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding-bottom: toRem(500);
+		@media(max-width: toEm(760)){
+			@include adaptiveValue("padding-bottom", 300, 120, $widthFrom:760);
+		}
 	}
-
 	// .dashboard__title
 
 	&__title {
-		&:not(:last-child) {
-			@include adaptiveValue("margin-bottom", 70, 40);
-		}
+		text-align: center;
 	}
 	&__label {
 		&:not(:last-child) {
 			@include adaptiveValue("margin-bottom", 25, 15);
+		}
+	}
+	&__video {
+	}
+}
+.video {
+	max-width: toRem(830);
+	padding: 0 toRem(15);
+	position: absolute;
+	z-index: 5;
+	bottom: -30%;
+	cursor: pointer;
+	height: auto;
+
+	video {
+		border: toRem(2) solid #8b8b8bb3;
+		border-radius: toRem(20);
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+	&__button {
+		@include adaptiveValue("width", 56, 30);
+		@include adaptiveValue("height", 56, 30);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 50%;
+		background: rgba(160, 156, 144, 0.6);
+		backdrop-filter: blur(20px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 1;
+		transition:
+			opacity 0.3s ease,
+			visibility 0.3s ease;
+		@media (max-width: toEm(767.98)) {
+			display: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				svg {
+					transform: scale(1.1);
+				}
+			}
+		}
+		svg {
+			will-change: transform;
+			transition: transform 0.3s;
+			@include adaptiveValue("width", 18, 8);
+			@include adaptiveValue("height", 18, 8);
 		}
 	}
 }
@@ -1390,7 +1457,7 @@ body {
 	flex-shrink: 0;
 	border-radius: 50%;
 	transition: all 0.3s ease;
-	background: #1a659e;
+	background: var(--light-accent-color);
 	@media (max-width: toEm(480)) {
 		width: toRem(10);
 		height: toRem(10);
@@ -1400,7 +1467,7 @@ body {
 	width: toRem(36);
 	height: toRem(12);
 	border-radius: toRem(7);
-	background: #095188;
+	background: var(--dark--accent-color);
 	transition: all 0.3s ease;
 	@media (max-width: toEm(480)) {
 		height: toRem(10);
@@ -1542,7 +1609,7 @@ body {
 }
 
 .faq__item.open .item-faq__header h3 {
-	color: #095188;
+	color: var(--dark--accent-color);
 }
 //=======================POPUP=====================
 .popup {
@@ -1584,7 +1651,7 @@ body {
 		right: toRem(15);
 		font-size: toRem(25);
 		cursor: pointer;
-		color: #095188;
+		color: var(--dark--accent-color);
 	}
 	&__form {
 		display: flex;
@@ -1608,7 +1675,7 @@ body {
 		border-radius: toRem(5);
 		&:focus {
 			outline: none;
-			border-color: #1a659e;
+			border-color: var(--light-accent-color);
 		}
 	}
 }
@@ -1631,7 +1698,7 @@ body {
 
 	&__body {
 		border-radius: toRem(20) 0 toRem(20) 0;
-		background-color: #095188;
+		background-color: var(--dark--accent-color);
 		display: flex;
 		gap: toRem(20);
 		justify-content: space-between;
@@ -1714,7 +1781,7 @@ body {
 
 .footer {
 	background-color: transparent;
-	background-image: linear-gradient(180deg, #1a659e 0%, #095188 100%);
+	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark--accent-color) 100%);
 	border-radius: toRem(50) 0 0 0;
 	padding-top: toRem(150);
 	@include adaptiveValue("padding-bottom", 40, 20);
@@ -1814,7 +1881,7 @@ body {
 		transition: background-color 0.3s;
 		@media (any-hover: hover) {
 			&:hover {
-				background-color: #095188;
+				background-color: var(--dark--accent-color);
 			}
 		}
 		&::before {
