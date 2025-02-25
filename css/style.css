@@ -3041,7 +3041,7 @@ body.menu-open {
 }
 
 .faq__item.open .item-faq__header h3 {
-  color: var(--dark--accent-color);
+  color: var(--dark-accent-color);
 }
 
 .popup {

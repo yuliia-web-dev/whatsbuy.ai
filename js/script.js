@@ -296,9 +296,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Check if all required elements exist
 	if (!popup || !button || !close || !form) return;
 
+	// Save the current scrollbar width to prevent layout shift
+	const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
 	// Add class to body to prevent scroll jump
 	const addBodyOverflowClass = () => {
-		const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 		body.style.paddingRight = `${scrollbarWidth}px`;
 		body.classList.add("no-scroll");
 	};
@@ -317,13 +319,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	close.addEventListener("click", function () {
 		popup.classList.remove("active");
-		removeBodyOverflowClass(); // Enable scrolling
+		// Add delay before enabling scroll to prevent jump
+		setTimeout(() => removeBodyOverflowClass(), 100);
 	});
 
 	popup.addEventListener("click", function (e) {
 		if (e.target === popup) {
 			popup.classList.remove("active");
-			removeBodyOverflowClass(); // Enable scrolling
+			// Add delay before enabling scroll to prevent jump
+			setTimeout(() => removeBodyOverflowClass(), 100);
 		}
 	});
 
@@ -340,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Close the popup after submission
 		popup.classList.remove("active");
-		removeBodyOverflowClass(); // Enable scrolling
+		setTimeout(() => removeBodyOverflowClass(), 100); // Add delay before enabling scroll
 	});
 });
 
