@@ -419,19 +419,16 @@ body {
 	animation-delay: 1.5s;
 }
 
-
-
 @keyframes fadeInScale {
 	0% {
 		opacity: 0;
-		transform: scale(0.9); 
+		transform: scale(0.9);
 	}
 	100% {
 		opacity: 1;
-		transform: scale(1); 
+		transform: scale(1);
 	}
 }
-
 
 .shape-fill {
 	fill: #fff;
@@ -934,7 +931,7 @@ body {
 		justify-content: space-between;
 		@media (max-width: toEm(960)) {
 			flex-direction: column;
-			align-items: center;
+			align-items: flex-start;
 			gap: toRem(50);
 		}
 	}
@@ -1523,7 +1520,7 @@ body {
 		justify-content: space-between;
 		@media (max-width: toRem(880)) {
 			flex-direction: column;
-			gap: toRem(100);
+			gap: toRem(120);
 			align-items: center;
 		}
 	}
@@ -1575,20 +1572,13 @@ body {
 		transform: translateX(-50%);
 		pointer-events: none;
 		z-index: 3;
+		@media (max-width: toRem(1140)) {
+			left: 60%;
+		}
 		@media (max-width: toRem(880)) {
-			bottom: toRem(240);
+			@include adaptiveValue("bottom", 240, 350, $widthFrom: 880);
 			left: toRem(0);
 			transform: translateX(0);
-			width: toRem(60);
-			height: toRem(60);
-		}
-		@media (max-width: toRem(500)) {
-			bottom: toRem(305);
-			width: toRem(60);
-			height: toRem(60);
-		}
-		@media (max-width: toRem(375)) {
-			bottom: toRem(340);
 			width: toRem(60);
 			height: toRem(60);
 		}
@@ -1596,6 +1586,9 @@ body {
 }
 
 .slide-review {
+	height: auto;
+	display: flex;
+	flex-direction: column;
 	// .item-reviews__text
 
 	&__text {
@@ -1603,6 +1596,7 @@ body {
 		font-style: italic;
 		color: #8b8b8b;
 		line-height: 1.2;
+		flex-grow: 1;
 		&:not(:last-child) {
 			margin-bottom: toRem(40);
 		}

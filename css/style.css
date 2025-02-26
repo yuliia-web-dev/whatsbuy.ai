@@ -2038,9 +2038,9 @@ body.menu-open {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     gap: 3.125rem;
   }
 }
@@ -2961,7 +2961,7 @@ body.menu-open {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 6.25rem;
+    gap: 7.5rem;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -3023,9 +3023,13 @@ body.menu-open {
   pointer-events: none;
   z-index: 3;
 }
+@media (max-width: 71.25rem) {
+  .reviews__quotes {
+    left: 60%;
+  }
+}
 @media (max-width: 55rem) {
   .reviews__quotes {
-    bottom: 15rem;
     left: 0rem;
     -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -3034,26 +3038,47 @@ body.menu-open {
     height: 3.75rem;
   }
 }
-@media (max-width: 31.25rem) {
+@media (max-width: 55rem) and (min-width: 55em) {
   .reviews__quotes {
-    bottom: 19.0625rem;
-    width: 3.75rem;
-    height: 3.75rem;
+    bottom: 15rem;
   }
 }
-@media (max-width: 23.4375rem) {
+@media (max-width: 55rem) and (min-width: 20em) and (max-width: 55em) {
+  @supports (bottom: clamp( 15rem , 25.8035714286rem  +  -19.6428571429vw , 21.875rem )) {
+    .reviews__quotes {
+      bottom: clamp( 15rem , 25.8035714286rem  +  -19.6428571429vw , 21.875rem );
+    }
+  }
+  @supports not (bottom: clamp( 15rem , 25.8035714286rem  +  -19.6428571429vw , 21.875rem )) {
+    .reviews__quotes {
+      bottom: calc(21.875rem + -6.875 * (100vw - 20rem) / 35);
+    }
+  }
+}
+@media (max-width: 55rem) and (max-width: 20em) {
   .reviews__quotes {
-    bottom: 21.25rem;
-    width: 3.75rem;
-    height: 3.75rem;
+    bottom: 21.875rem;
   }
 }
 
+.slide-review {
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
 .slide-review__text {
   font-size: 1.375rem;
   font-style: italic;
   color: #8b8b8b;
   line-height: 1.2;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 .slide-review__text:not(:last-child) {
   margin-bottom: 2.5rem;
