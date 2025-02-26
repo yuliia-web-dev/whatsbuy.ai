@@ -898,7 +898,7 @@ body {
 
 .about {
 	@include adaptiveValue("padding-top", 100, 50);
-	@include adaptiveValue("padding-bottom", 100, 50);
+	padding-bottom: toRem(50);
 	&--padding {
 		padding-top: toRem(250);
 		@media (max-width: toEm(760)) {

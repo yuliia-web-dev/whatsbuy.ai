@@ -1887,6 +1887,9 @@ body.menu-open {
   }
 }
 
+.about {
+  padding-bottom: 3.125rem;
+}
 @media (min-width: 73.125em) {
   .about {
     padding-top: 6.25rem;
@@ -1907,28 +1910,6 @@ body.menu-open {
 @media (max-width: 20em) {
   .about {
     padding-top: 3.125rem;
-  }
-}
-@media (min-width: 73.125em) {
-  .about {
-    padding-bottom: 6.25rem;
-  }
-}
-@media (min-width: 20em) and (max-width: 73.125em) {
-  @supports (padding-bottom: clamp( 3.125rem , 1.9485294118rem  +  5.8823529412vw , 6.25rem )) {
-    .about {
-      padding-bottom: clamp( 3.125rem , 1.9485294118rem  +  5.8823529412vw , 6.25rem );
-    }
-  }
-  @supports not (padding-bottom: clamp( 3.125rem , 1.9485294118rem  +  5.8823529412vw , 6.25rem )) {
-    .about {
-      padding-bottom: calc(3.125rem + 3.125 * (100vw - 20rem) / 53.125);
-    }
-  }
-}
-@media (max-width: 20em) {
-  .about {
-    padding-bottom: 3.125rem;
   }
 }
 .about--padding {
