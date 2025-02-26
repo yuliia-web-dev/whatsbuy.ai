@@ -470,6 +470,8 @@ body {
 
 	&__wrapper {
 		display: grid;
+			align-items: stretch;
+
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: toRem(30);
 	}
@@ -505,7 +507,7 @@ body {
 	text-align: left;
 	box-shadow: 0 0 toRem(40) 0 rgba(0, 0, 0, 0.05);
 	border-style: none;
-	height: fit-content;
+	height: auto;
 	border-radius: toRem(20) 0 toRem(20) 0;
 	background-color: #fff;
 	transition: all 0.4s;
@@ -1025,7 +1027,7 @@ body {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		gap: toRem(10);
+		gap: toRem(20);
 		@media (max-width: toEm(880)) {
 			flex-direction: column;
 			align-items: center;
@@ -1051,7 +1053,7 @@ body {
 	flex-direction: column;
 	gap: toRem(20);
 	align-items: center;
-	height: 100%;
+	height: auto;
 
 	// .item-process__icon
 
@@ -1075,7 +1077,7 @@ body {
 	&__text {
 		color: #8b8b8b;
 		line-height: 1.4em;
-		flex: 1;
+	flex-grow: 1;
 	}
 
 	// .item-process__number
