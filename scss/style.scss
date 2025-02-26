@@ -927,7 +927,7 @@ body {
 		max-width: toRem(1170);
 		display: flex;
 		align-items: center;
-		gap: toRem(20);
+		gap: toRem(30);
 		justify-content: space-between;
 		@media (max-width: toEm(960)) {
 			flex-direction: column;
@@ -1007,18 +1007,38 @@ body {
 		max-width: toRem(480);
 		opacity: 0;
 		transform: translateX(-20px);
+		position: relative;
+		flex-shrink: 0;
+		&--padding {
+			padding-top: toRem(40);
+		}
 		&.visible {
 			opacity: 1;
 			transform: translateX(0);
 			transition: all 0.5s ease-in-out;
 		}
+		&::before {
+			content: "";
+			@include adaptiveValue("width", 500, 290);
+			@include adaptiveValue("height", 500, 290);
+			height: toRem(500);
+			background-color: var(--dark-accent-color);
+			opacity: 0.2;
+			border-radius: 50%;
+			position: absolute;
+			top: toRem(0);
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: -1;
+		}
 		@media (max-width: toEm(960)) {
-			max-width: 100%;
+			align-self: center;
+			flex-shrink: 1;
 		}
 		img {
 			width: 100%;
 			height: 100%;
-			object-fit: contain;
+			object-fit: cover;
 		}
 		&--right {
 			opacity: 0;
@@ -1273,10 +1293,20 @@ body {
 	}
 	&__body {
 		display: flex;
+		justify-content: space-between;
+		gap: toRem(20);
 		@include adaptiveValue("padding-top", 100, 50);
 		padding-left: toRem(40);
 		padding-right: toRem(40);
 		padding-bottom: toRem(40);
+		@media (max-width: toEm(930)) {
+			flex-direction: column;
+		}
+		@media (max-width: toEm(480)) {
+			padding: toRem(0);
+						padding-top: toRem(50);
+
+		}
 	}
 	// .advantages__title
 
@@ -1304,6 +1334,9 @@ body {
 		padding-bottom: toRem(30);
 		border-bottom: toRem(2) dashed #8b8b8b9e;
 		align-items: flex-start;
+		@media (max-width: toEm(930)) {
+			max-width: 100%;
+		}
 		@media (max-width: toEm(590)) {
 			grid-template-columns: 1fr;
 			max-width: 100%;
@@ -1328,14 +1361,26 @@ body {
 	// .advantages__image
 
 	&__image {
-		position: absolute;
-		right: 0;
-		bottom: 0;
 		max-width: toRem(380);
+		position: relative;
+		@media (max-width: toEm(930)) {
+			align-self: center;
+		}
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: -25px;
+			left: 0;
+			height: toRem(50);
+			width: 100%;
+			filter: blur(9px);
+			background-color: var(--light-accent-color);
+			z-index: 1;
+		}
 		img {
 			width: 100%;
 			height: 100%;
-			object-fit: contain;
+			object-fit: cover;
 		}
 	}
 }
@@ -1538,9 +1583,7 @@ body {
 			transform: translateX(0);
 			transition: all 0.5s ease-in-out;
 		}
-		@media (max-width: toRem(880)) {
-			max-width: 100%;
-		}
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -1691,7 +1734,7 @@ body {
 		display: flex;
 		gap: toRem(50);
 		@media (max-width: toEm(900)) {
-			flex-direction: column;
+			flex-direction: column-reverse;
 		}
 	}
 
