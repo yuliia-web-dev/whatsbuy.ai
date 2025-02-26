@@ -361,6 +361,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+//=================Process animation ==================
+
+document.addEventListener("DOMContentLoaded", () => {
+	const items = document.querySelectorAll(".process__item");
+	const arrows = document.querySelectorAll(".arrow");
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry, index) => {
+				if (entry.isIntersecting) {
+					setTimeout(() => {
+						entry.target.classList.add("visible");
+						if (arrows[index]) {
+							arrows[index].classList.add("visible");
+						}
+					}, index * 500); 
+					observer.unobserve(entry.target); 
+				}
+			});
+		},
+		{ threshold: 0.3 }
+	);
+
+	items.forEach((item) => observer.observe(item));
+});
 
 
+//======================SCROLL ANIMATION================
 
+const observeElements = (selectors, options = { threshold: 0.3, unobserve: true }) => {
+	const elements = document.querySelectorAll(selectors);
+
+	if (!elements.length) return;
+
+	const observer = new IntersectionObserver((entries, observer) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+				if (options.unobserve) observer.unobserve(entry.target);
+			}
+		});
+	}, options);
+
+	elements.forEach(el => observer.observe(el));
+};
+
+observeElements('.features__item, .features__label, .features__title,.partners__label,.partners__title, .logo-partner__img, .about__image--right, .about__content--left,.process__label, .process__title, .advantages__item, .advantages__title,.dashboard__label, .dashboard__title, .dashboard__video,.about__image,.about__content,.reviews__label,.reviews__title, .reviews__img,.reviews__swiper,.faq__left-part,.faq__right-part,.download');
