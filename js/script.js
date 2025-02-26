@@ -257,11 +257,11 @@ if (faqItems.length > 0) {
 		header.addEventListener('click', () => {
 			const isOpen = item.classList.contains('open');
 
-			// Закриваємо всі інші відкриті елементи
+			// Close all other open items
 			faqItems.forEach(otherItem => {
 				if (otherItem !== item && otherItem.classList.contains('open')) {
 					const otherAnswer = otherItem.querySelector('.item-faq__answer');
-					otherAnswer.style.height = otherAnswer.scrollHeight + 'px'; // Встановлюємо поточну висоту перед закриттям
+					otherAnswer.style.height = otherAnswer.scrollHeight + 'px'; // Set the current height before closing
 					setTimeout(() => {
 						otherAnswer.style.height = '0px';
 					}, 10);
@@ -270,17 +270,18 @@ if (faqItems.length > 0) {
 			});
 
 			if (!isOpen) {
+				// Open the clicked item
 				item.classList.add('open');
 				answer.style.height = answer.scrollHeight + 'px';
 				answer.addEventListener('transitionend', function onOpen(event) {
-					// Переконуємось, що завершилась саме висотна анімація
+					// Ensure the transition is for height
 					if (event.propertyName === 'height') {
 						answer.style.height = 'auto';
 						answer.removeEventListener('transitionend', onOpen);
 					}
 				});
 			} else {
-				// Закриття елемента
+				// Close the clicked item
 				answer.style.height = answer.scrollHeight + 'px';
 				setTimeout(() => {
 					answer.style.height = '0px';
@@ -289,7 +290,7 @@ if (faqItems.length > 0) {
 			}
 		});
 
-		// Спостерігаємо за змінами вмісту
+		// Observe content changes and adjust height if needed
 		const observer = new MutationObserver(() => {
 			if (item.classList.contains('open')) {
 				answer.style.height = 'auto';
@@ -385,8 +386,8 @@ document.addEventListener("DOMContentLoaded", () => {
 						if (arrows[index]) {
 							arrows[index].classList.add("visible");
 						}
-					}, index * 500); 
-					observer.unobserve(entry.target); 
+					}, index * 500);
+					observer.unobserve(entry.target);
 				}
 			});
 		},
