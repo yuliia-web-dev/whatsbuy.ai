@@ -1883,6 +1883,9 @@ body {
 	display: flex;
 	align-items: center;
 	column-gap: toRem(12);
+		@media (max-width: toEm(485)) {
+		gap: toRem(20);
+		}
 	// .social__link
 
 	&__link {

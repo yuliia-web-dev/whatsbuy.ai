@@ -3373,6 +3373,11 @@ body.menu-open {
      -moz-column-gap: 0.75rem;
           column-gap: 0.75rem;
 }
+@media (max-width: 30.3125em) {
+  .social {
+    gap: 1.25rem;
+  }
+}
 .social__link {
   width: 2.375rem;
   height: 2.375rem;
