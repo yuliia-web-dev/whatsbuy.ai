@@ -2705,6 +2705,7 @@ body.menu-open {
 .advantages__image {
   max-width: 23.75rem;
   position: relative;
+  z-index: 2;
 }
 @media (max-width: 58.125em) {
   .advantages__image {
@@ -2722,7 +2723,7 @@ body.menu-open {
   -webkit-filter: blur(9px);
           filter: blur(9px);
   background-color: var(--light-accent-color);
-  z-index: 1;
+  z-index: 3;
 }
 .advantages__image img {
   width: 100%;

@@ -1363,6 +1363,7 @@ body {
 	&__image {
 		max-width: toRem(380);
 		position: relative;
+		z-index: 2;
 		@media (max-width: toEm(930)) {
 			align-self: center;
 		}
@@ -1375,7 +1376,7 @@ body {
 			width: 100%;
 			filter: blur(9px);
 			background-color: var(--light-accent-color);
-			z-index: 1;
+			z-index: 3;
 		}
 		img {
 			width: 100%;
