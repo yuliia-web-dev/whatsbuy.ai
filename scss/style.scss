@@ -419,13 +419,7 @@ body {
 	animation-delay: 1.5s;
 }
 
-.hero__image {
-	opacity: 0;
-	transform: scale(0.9); 
-	animation: fadeInScale 1s ease-out forwards;
-	animation-delay: 2s;
-	will-change: transform;
-}
+
 
 @keyframes fadeInScale {
 	0% {

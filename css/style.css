@@ -787,18 +787,6 @@ body.menu-open {
           animation-delay: 1.5s;
 }
 
-.hero__image {
-  opacity: 0;
-  -webkit-transform: scale(0.9);
-      -ms-transform: scale(0.9);
-          transform: scale(0.9);
-  -webkit-animation: fadeInScale 1s ease-out forwards;
-          animation: fadeInScale 1s ease-out forwards;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-  will-change: transform;
-}
-
 @-webkit-keyframes fadeInScale {
   0% {
     opacity: 0;

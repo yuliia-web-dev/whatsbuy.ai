@@ -252,16 +252,16 @@ if (faqItems.length > 0) {
 		const header = item.querySelector('.item-faq__header');
 		const answer = item.querySelector('.item-faq__answer');
 
-		if (!header || !answer) return; // Перевіряємо, чи елементи існують
+		if (!header || !answer) return; 
 
 		header.addEventListener('click', () => {
 			const isOpen = item.classList.contains('open');
 
-			// Закриваємо всі відкриті елементи перед відкриттям нового
+		
 			faqItems.forEach(otherItem => {
 				if (otherItem !== item && otherItem.classList.contains('open')) {
 					const otherAnswer = otherItem.querySelector('.item-faq__answer');
-					otherAnswer.style.height = otherAnswer.scrollHeight + 'px'; // Встановлюємо поточну висоту перед закриттям
+					otherAnswer.style.height = otherAnswer.scrollHeight + 'px'; закриттям
 					setTimeout(() => {
 						otherAnswer.style.height = '0px';
 					}, 10);
@@ -277,7 +277,7 @@ if (faqItems.length > 0) {
 					answer.removeEventListener('transitionend', onOpen);
 				});
 			} else {
-				answer.style.height = answer.scrollHeight + 'px'; // Фіксуємо висоту перед закриттям
+				answer.style.height = answer.scrollHeight + 'px'; 
 				setTimeout(() => {
 					answer.style.height = '0px';
 				}, 10);
@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-//=================Process animation ==================
+//=================PROCESS SECTION animation ==================
 
 document.addEventListener("DOMContentLoaded", () => {
 	const items = document.querySelectorAll(".process__item");
