@@ -1201,7 +1201,7 @@ body {
 	&__title {
 		@include adaptiveValue("font-size", 22, 19);
 		font-family: "Inter";
-		color: var(--dark--accent-color);
+		color: var(--dark-accent-color);
 		font-weight: 700;
 		line-height: 1.2;
 		text-transform: capitalize;

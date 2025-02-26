@@ -2431,7 +2431,7 @@ body.menu-open {
 }
 .item-process__title {
   font-family: "Inter";
-  color: var(--dark--accent-color);
+  color: var(--dark-accent-color);
   font-weight: 700;
   line-height: 1.2;
   text-transform: capitalize;
