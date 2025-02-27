@@ -418,3 +418,4 @@ const observeElements = (selectors, options = { threshold: 0.3, unobserve: true 
 };
 
 observeElements('.features__item, .features__label, .features__title,.partners__label,.partners__title, .logo-partner__img, .about__image--right, .about__content--left,.process__label, .process__title, .advantages__item, .advantages__title,.dashboard__label, .dashboard__title, .dashboard__video,.about__image,.about__content,.reviews__label,.reviews__title, .reviews__img,.reviews__swiper,.faq__left-part,.faq__right-part,.download,.advantages__image');
+

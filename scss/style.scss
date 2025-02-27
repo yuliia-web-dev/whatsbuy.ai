@@ -107,7 +107,7 @@ body {
 
 	&__body {
 		@include adaptiveValue("padding", 20, 10);
-		gap: toRem(15);
+		gap: toRem(10);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -123,8 +123,7 @@ body {
 		flex-grow: 1;
 
 		img {
-								@include adaptiveValue("width", 200, 150);
-
+			@include adaptiveValue("width", 200, 150);
 			width: 100%;
 			height: 100%;
 			object-fit: contain;
@@ -306,7 +305,7 @@ body {
 	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark-accent-color) 100%);
 	overflow: hidden;
 	@media (max-width: toEm(890)) {
-		min-height: toRem(500);
+		min-height: 500px;
 	}
 
 	&__shape-bottom {
@@ -327,7 +326,7 @@ body {
 	&__container {
 		display: flex;
 		flex-direction: column;
-		gap: toRem(40);
+		gap: toRem(38);
 		justify-content: center;
 		align-items: center;
 		z-index: 2;
@@ -396,7 +395,6 @@ body {
 	&__image {
 		max-width: toRem(850);
 		z-index: 2;
-
 		img {
 			width: 100%;
 			height: 100%;
@@ -1309,8 +1307,7 @@ body {
 		}
 		@media (max-width: toEm(480)) {
 			padding: toRem(0);
-						padding-top: toRem(50);
-
+			padding-top: toRem(50);
 		}
 	}
 	// .advantages__title
@@ -1371,7 +1368,7 @@ body {
 		z-index: 2;
 		opacity: 0;
 		transform: translateX(20px);
-			&.visible {
+		&.visible {
 			opacity: 1;
 			transform: translateX(0);
 			transition: all 0.5s ease-in-out;

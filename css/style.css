@@ -233,7 +233,7 @@ body.menu-open {
   max-width: 81.25rem;
 }
 .header__body {
-  gap: 0.9375rem;
+  gap: 0.625rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -636,7 +636,7 @@ body.menu-open {
 }
 @media (max-width: 55.625em) {
   .hero {
-    min-height: 31.25rem;
+    min-height: 500px;
   }
 }
 .hero__shape-bottom {
@@ -660,7 +660,7 @@ body.menu-open {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 2.5rem;
+  gap: 2.375rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
