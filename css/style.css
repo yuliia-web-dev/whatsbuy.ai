@@ -773,8 +773,8 @@ body.menu-open {
   -webkit-transform: scale(0.9);
       -ms-transform: scale(0.9);
           transform: scale(0.9);
-  -webkit-animation: fadeInScale 1s ease-out forwards;
-          animation: fadeInScale 1s ease-out forwards;
+  -webkit-animation: fadeInScale 0.8s ease-out forwards;
+          animation: fadeInScale 0.8s ease-out forwards;
 }
 
 .hero__label {
