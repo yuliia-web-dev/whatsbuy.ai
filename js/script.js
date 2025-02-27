@@ -89,12 +89,10 @@ if (changingWord) {
 document.addEventListener("DOMContentLoaded", function () {
 	const elementsToMove = document.querySelectorAll("[data-da]");
 
-	// Спочатку робимо елементи невидимими
 	elementsToMove.forEach(function (element) {
 		element.classList.remove("visible");
 	});
 
-	// Функція для переміщення елементів
 	function moveElements() {
 		const screenWidth = window.innerWidth;
 
@@ -108,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
 				const destination = document.querySelector(destinationSelector);
 				if (!destination) return;
 
-				// Збереження початкового контейнера
 				if (!element.dataset.originalParent) {
 					const parent = element.parentNode;
 					const index = Array.from(parent.children).indexOf(element);
@@ -151,12 +148,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	moveElements();
 
-	// Додаємо клас для видимості після завантаження сторінки
 	setTimeout(function () {
 		elementsToMove.forEach(function (element) {
 			element.classList.add("visible");
 		});
-	}, 100); // Затримка для забезпечення плавності анімації
+	}, 100);
 
 	window.addEventListener("resize", function () {
 		moveElements();
