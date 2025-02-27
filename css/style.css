@@ -316,6 +316,20 @@ body.menu-open {
           flex-grow: 1;
 }
 
+@media (max-width: 30em) {
+  [data-da] {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.5s ease, visibility 0s 0.5s;
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
+  }
+  [data-da].visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.5s ease, visibility 0s;
+    transition: opacity 0.5s ease, visibility 0s;
+  }
+}
 @media (max-width: 71.875em) {
   .menu__body {
     padding: 2.5rem 0.9375rem;

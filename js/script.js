@@ -87,9 +87,16 @@ if (changingWord) {
 //====================MOVE HEADER BUTTON TO BURGER MENU========================
 
 document.addEventListener("DOMContentLoaded", function () {
+	const elementsToMove = document.querySelectorAll("[data-da]");
+
+	// Спочатку робимо елементи невидимими
+	elementsToMove.forEach(function (element) {
+		element.classList.remove("visible");
+	});
+
+	// Функція для переміщення елементів
 	function moveElements() {
 		const screenWidth = window.innerWidth;
-		const elementsToMove = document.querySelectorAll("[data-da]");
 
 		elementsToMove.forEach(function (element) {
 			const data = element.getAttribute("data-da").split(",");
@@ -144,10 +151,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	moveElements();
 
+	// Додаємо клас для видимості після завантаження сторінки
+	setTimeout(function () {
+		elementsToMove.forEach(function (element) {
+			element.classList.add("visible");
+		});
+	}, 100); // Затримка для забезпечення плавності анімації
+
 	window.addEventListener("resize", function () {
 		moveElements();
 	});
 });
+
 
 
 //==============SCROLL TO TOP=============
