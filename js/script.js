@@ -87,14 +87,9 @@ if (changingWord) {
 //====================MOVE HEADER BUTTON TO BURGER MENU========================
 
 document.addEventListener("DOMContentLoaded", function () {
-	const elementsToMove = document.querySelectorAll("[data-da]");
-
-	elementsToMove.forEach(function (element) {
-		element.classList.remove("visible");
-	});
-
 	function moveElements() {
 		const screenWidth = window.innerWidth;
+		const elementsToMove = document.querySelectorAll("[data-da]");
 
 		elementsToMove.forEach(function (element) {
 			const data = element.getAttribute("data-da").split(",");
@@ -106,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const destination = document.querySelector(destinationSelector);
 				if (!destination) return;
 
+				// Збереження початкового контейнера
 				if (!element.dataset.originalParent) {
 					const parent = element.parentNode;
 					const index = Array.from(parent.children).indexOf(element);
@@ -148,18 +144,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	moveElements();
 
-	setTimeout(function () {
-		elementsToMove.forEach(function (element) {
-			element.classList.add("visible");
-		});
-	}, 100);
-
 	window.addEventListener("resize", function () {
 		moveElements();
 	});
 });
 
-
+//====================SMOOTH PAGE LOADING=============================
+document.addEventListener("DOMContentLoaded", function () {
+	document.body.classList.add("loaded");
+});
 
 //==============SCROLL TO TOP=============
 
@@ -369,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Add actual form submission logic here
 
-		alert("Message Sent!");
+		alert("Thank you! We'll get back to you soon.");
 
 		// Clear the form after submission
 		form.reset();
