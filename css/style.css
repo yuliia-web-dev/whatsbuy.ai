@@ -3687,6 +3687,7 @@ body.menu-open {
   }
 }
 .download__image {
+  z-index: 2;
   max-width: 37.5rem;
 }
 @media (max-width: 49.0625em) {

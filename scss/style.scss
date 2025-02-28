@@ -142,21 +142,23 @@ body {
 		flex-grow: 1;
 	}
 }
-@media (max-width:toEm(480)){
-[data-da] {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0s 0.5s;
-}
+@media (max-width: toEm(480)) {
+	[data-da] {
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.5s ease,
+			visibility 0s 0.5s;
+	}
 
-[data-da].visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease, visibility 0s;
+	[data-da].visible {
+		opacity: 1;
+		visibility: visible;
+		transition:
+			opacity 0.5s ease,
+			visibility 0s;
+	}
 }
-}
-
-
 
 .menu {
 	// .menu__body
@@ -2056,6 +2058,7 @@ body {
 	// .download__image
 
 	&__image {
+		z-index: 2;
 		max-width: toRem(600);
 		@media (max-width: toEm(785)) {
 			max-width: 100%;
