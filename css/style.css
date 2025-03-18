@@ -126,14 +126,14 @@ body {
   font-family: "Poppins";
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: opacity 0.1s ease, visibility 0s linear 0.1s;
-  transition: opacity 0.1s ease, visibility 0s linear 0.1s;
+  -webkit-transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+  transition: opacity 0.2s ease, visibility 0s linear 0.2s;
 }
 body.loaded {
   opacity: 1;
   visibility: visible;
-  -webkit-transition: opacity 0.1s ease;
-  transition: opacity 0.1s ease;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 body.menu-open {
   overflow: hidden;
@@ -141,6 +141,7 @@ body.menu-open {
       touch-action: none;
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
+  scrollbar-gutter: stable;
 }
 
 .no-scroll {
