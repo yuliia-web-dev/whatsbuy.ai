@@ -49,8 +49,9 @@ body {
 }
 
 .header {
+	position: fixed;
 	padding-top: toRem(10);
-	position: relative;
+background-color: #1a659e;	inset: 0% 0% auto;
 	width: 100%;
 	transition: padding-top 0.3s ease;
 	z-index: 10;
@@ -143,8 +144,9 @@ body {
 //=========================HERO SECTION================================
 
 .hero {
-	position: relative;
-	overflow: auto;
+	position: fixed;
+	width: 100vw; 
+	height: 100vh; 
 	display: flex;
 	flex-direction: column; 
 	justify-content: center;
@@ -154,7 +156,7 @@ body {
 
 	&__shape-bottom {
 		position: absolute;
-		bottom: 0;
+		bottom: -4px;
 		pointer-events: none;
 		z-index: 2;
 		width: 100%;
@@ -195,7 +197,7 @@ body {
 	// .hero__content
 
 	&__content {
-		padding-top: toRem(120);
+		padding-top: toRem(90);
 		text-align: center;
 		color: #fff;
 		display: flex;
@@ -237,10 +239,11 @@ body {
 
 	// .hero__image
 
-	&__image {
+	&__video {
 		max-width: toRem(850);
 		z-index: 2;
-		img {
+		video {
+			border-radius: toRem(20);
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
