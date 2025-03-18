@@ -49,9 +49,9 @@ body {
 }
 
 .header {
-	position: fixed;
 	padding-top: toRem(10);
-background-color: #1a659e;	inset: 0% 0% auto;
+	position: fixed;
+	inset: 0% 0% auto;
 	width: 100%;
 	transition: padding-top 0.3s ease;
 	z-index: 10;
@@ -62,16 +62,13 @@ background-color: #1a659e;	inset: 0% 0% auto;
 	}
 
 	&__body {
-		padding: toRem(10) toRem(10);
+		padding: toRem(10);
 		gap: toRem(10);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		background-color: #fff;
 		border-radius: toRem(20) 0 toRem(20) 0;
-		@media (max-width: toEm(480)) {
-			padding: toRem(10) toRem(5);
-		}
 	}
 
 	// .header__logo
@@ -82,7 +79,7 @@ background-color: #1a659e;	inset: 0% 0% auto;
 		flex-grow: 1;
 
 		img {
-			@include adaptiveValue("width", 200, 110);
+			@include adaptiveValue("width", 200, 100);
 			width: 100%;
 			height: 100%;
 			object-fit: contain;
@@ -144,16 +141,18 @@ background-color: #1a659e;	inset: 0% 0% auto;
 //=========================HERO SECTION================================
 
 .hero {
-	position: fixed;
-	width: 100vw; 
-	height: 100vh; 
+	width: 100%;
+	height: 100vh;
 	display: flex;
-	flex-direction: column; 
 	justify-content: center;
 	align-items: center;
+	position: relative;
 	background-color: transparent;
 	background-image: linear-gradient(180deg, var(--light-accent-color) 0%, var(--dark-accent-color) 100%);
-
+	overflow: hidden;
+	@media screen and (max-width: toEm(767.98)) {
+		height: auto;
+	}
 	&__shape-bottom {
 		position: absolute;
 		bottom: -4px;
@@ -197,7 +196,7 @@ background-color: #1a659e;	inset: 0% 0% auto;
 	// .hero__content
 
 	&__content {
-		padding-top: toRem(90);
+		padding-top: toRem(120);
 		text-align: center;
 		color: #fff;
 		display: flex;
